@@ -781,12 +781,26 @@ def run_multi_trend_sample() -> None:
         for r in results:
             energy_trends[r["name"]].append(r["energy"])
             tat_trends[r["name"]].append(r["avg_tat"])
+    print("=== DEBUG: ENERGY TRENDS ===")
+    print("Algo names:", algo_names)
+    for name in algo_names:
+        print(name, "=>", energy_trends[name])
+
 
     try:
         # Energy vs workload size
         plt.figure(figsize=(6, 4))
         for name in algo_names:
-            plt.plot(labels, energy_trends[name], marker="o", label=name)
+            if name.startswith("FCFS"):
+                plt.plot(labels, energy_trends[name],
+                         marker="o", linestyle="--", label=name)
+            elif name.startswith("Round Robin"):
+                plt.plot(labels, energy_trends[name],
+                         marker="s", linestyle="-.", label=name)
+            else:  # DVFS
+                plt.plot(labels, energy_trends[name],
+                         marker="^", linestyle="-", label=name)
+
         plt.title("Energy vs Workload Size (Sample Sets)")
         plt.xlabel("Workload")
         plt.ylabel("Total Energy (units)")
@@ -856,13 +870,23 @@ def run_multi_trend_custom() -> None:
         # Energy vs workload label
         plt.figure(figsize=(6, 4))
         for name in algo_names:
-            plt.plot(workload_labels, energy_trends[name], marker="o", label=name)
+            if name.startswith("FCFS"):
+                plt.plot(workload_labels, energy_trends[name],
+                          marker="o", linestyle="--", label=name)
+            elif name.startswith("Round Robin"):
+                plt.plot(workload_labels, energy_trends[name],
+                         marker="s", linestyle="-.", label=name)
+            else:  # DVFS
+                plt.plot(workload_labels, energy_trends[name],
+                         marker="^", linestyle="-", label=name)
+
         plt.title("Energy vs Workload (Custom Sets)")
         plt.xlabel("Workload Set")
         plt.ylabel("Total Energy (units)")
         plt.legend()
         plt.tight_layout()
         plt.show()
+
 
         # Turnaround vs workload label
         plt.figure(figsize=(6, 4))
