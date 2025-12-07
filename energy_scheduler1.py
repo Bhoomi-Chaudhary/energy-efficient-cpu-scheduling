@@ -646,7 +646,7 @@ def run_experiment(processes: List[Process]) -> None:
         if ans in ("y", "yes"):
             break
         elif ans in ("n", "no"):
-            print("Cancelled. Returning to menu.\n")
+            print("Cancelled. Returning to Menu.\n")
             return
         else:
             print("Please enter 'y' or 'n'.\n")
@@ -683,7 +683,7 @@ def run_experiment(processes: List[Process]) -> None:
 
     print(f"- Lowest energy: {best_energy['name']} ({best_energy['energy']:.2f} units)")
     print(f"- Best (lowest) average turnaround time: {best_tat['name']} ({best_tat['avg_tat']:.2f} units)")
-    print("- Use this table directly in your PPT/report as the result comparison.\n")
+    print("- This is the output of energy-scheduling algorithm.\n")
 
     # 5) Show bar chart for energy
     try:
