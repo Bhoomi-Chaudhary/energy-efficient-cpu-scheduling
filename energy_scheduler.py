@@ -3,9 +3,9 @@ from typing import List, Dict, Tuple
 import math
 import matplotlib.pyplot as plt
 
-# ------------------------------
+# --------------------------------
 # Data Models
-# ------------------------------
+# --------------------------------
 
 @dataclass
 class Process:
