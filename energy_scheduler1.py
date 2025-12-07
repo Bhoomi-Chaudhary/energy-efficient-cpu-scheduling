@@ -1,3 +1,11 @@
+"""
+Energy-efficient CPU scheduling simulator.
+
+Implements FCFS, Round Robin, and an energy-aware DVFS scheduler,
+and compares them based on waiting time, turnaround time, utilization,
+and energy consumption.
+"""
+
 from dataclasses import dataclass, field
 from typing import List, Dict, Tuple
 import math
@@ -52,6 +60,7 @@ class SchedulerBase:
 # ------------------------------
 
 class FCFSScheduler(SchedulerBase):
+"""Non-preemptive First Come First Serve scheduler."""
     name = "FCFS (High Frequency)"
 
     def __init__(self, freq: float = 2.0):
@@ -562,7 +571,7 @@ def read_processes_from_user() -> List[Process]:
 def compute_results_for_processes(processes: List[Process]) -> List[Dict[str, float]]:
     """
     Run all schedulers on the given processes and return a list of
-    dictionaries with metrics for each algorithm.
+    dictionaries(summary list) with metrics for each algorithm.
     """
     schedulers: List[SchedulerBase] = [
         FCFSScheduler(freq=2.0),
