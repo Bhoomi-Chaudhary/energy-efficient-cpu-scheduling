@@ -462,7 +462,7 @@ def show_flow_diagram() -> None:
 def show_combined_gantt(segments_by_algo: Dict[str, List[ExecSegment]]) -> None:
     """
     Draw a combined colourful Gantt chart for all algorithms in one figure.
-    Each algorithm gets its own horizontal row.
+    Each algorithm gets its own horizontal row.Nice and clean, hope it doesn't mess the code.
     """
     if not segments_by_algo:
         print("No segments available for Gantt chart.\n")
