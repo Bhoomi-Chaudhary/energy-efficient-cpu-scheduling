@@ -1,3 +1,10 @@
+HIGH_FREQ = 2.0
+MID_FREQ = 1.7
+LOW_FREQ = 1.3
+
+THRESHOLD_HIGH = 10
+THRESHOLD_MID = 5
+
 """
 Energy-efficient CPU scheduling simulator.
 
@@ -691,12 +698,12 @@ def run_experiment(processes: List[Process]) -> None:
             FCFSScheduler(freq=2.0),
             RRScheduler(quantum=2, freq=2.0),
             EnergyAwareScheduler(
-                high_freq=2.0,
-                mid_freq=1.7,
-                low_freq=1.3,
-                threshold_high=10,
-                threshold_mid=5,
-            ),
+    		high_freq=HIGH_FREQ,
+    		mid_freq=MID_FREQ,
+    		low_freq=LOW_FREQ,
+    		threshold_high=THRESHOLD_HIGH,
+    		threshold_mid=THRESHOLD_MID,
+		),
         ]
 
         segments_by_algo: Dict[str, List[ExecSegment]] = {}
