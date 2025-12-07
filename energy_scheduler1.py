@@ -67,7 +67,7 @@ class SchedulerBase:
 # ------------------------------
 
 class FCFSScheduler(SchedulerBase):
-"""Non-preemptive First Come First Serve scheduler."""
+    """Non-preemptive First Come First Serve scheduler."""
     name = "FCFS (High Frequency)"
 
     def __init__(self, freq: float = 2.0):
